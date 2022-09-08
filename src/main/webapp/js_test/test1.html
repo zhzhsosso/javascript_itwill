@@ -3,6 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <title>js_test/test1.html</title>
+<style type="text/css">
+#container {
+  width:600px;
+  margin:10px auto;
+}
+h2{
+	text-align : center;
+	color :gray;
+}
+h3{
+	text-align : right;
+	color : #E5E500;
+	font-size: 16px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+ul li {
+  margin:10px;
+}
+
+/* label 텍스트 스타일 */
+li label {
+  width:150px;
+  line-height: 25px;
+  float:left;
+
+
+}
+#buttons{
+	 width:400px;
+  	margin:20px auto;
+ 	 text-align: center;
+}
+
+/* 텍스트 필드 스타일 */
+input[type="text"], input[type="password"], input[type="email"] input[type="tel"]{
+  width:100px;
+  height:15px;
+}
+
+
+</style>
 <script type="text/javascript">
 function fun1(){
 	if(document.fr.name.value == ""){
@@ -11,38 +56,32 @@ function fun1(){
 		
 		return;
 	}
-	if(document.fr.jumin.value == ""){
+	if(document.fr.jumin.value.length < 6){
 		alert("주민번호를 입력하세요");
 		document.fr.jumin.focus();
 		
 		return;
 	}
-	if(document.fr.jumin2.value == ""){
+	if(document.fr.jumin2.value.length < 7){
 		alert("주민번호를 입력하세요");
 		document.fr.jumin2.focus();
 		
 		return;
 	}
-	if(document.fr.id.value == ""){
-		alert("아이디를 입력하세요");
+	if(document.fr.id.value.length < 4){
+		alert("아이디는 4~10자로 입력하세요");
 		document.fr.id.focus();
 		return;
 	}
-	if(document.fr.pw.value == ""){
-		alert("비밀번호를 입력하세요");
+	if(document.fr.pw.value.length < 4){
+		alert("비밀번호는 4~10자로 입력하세요");
 		document.fr.pw.focus();
 		
 		return;
 	}
 	if(document.fr.pw.value != document.fr.pw2.value){
-		alert("비밀번호를 확인하세요");
+		alert("비밀번호가 일치하지 않습니다");
 		document.fr.pw2.focus();
-		
-		return;
-	}
-	if(document.fr.email.value == ""){
-		alert("이메일을 입력하세요");
-		document.fr.email.focus();
 		
 		return;
 	}
@@ -65,31 +104,75 @@ function fun1(){
 </script>
 </head>
 <body>
-<form action = "b.jsp" method="get" name="fr" >
-	* 표시는 반드시 입력하셔야 합니다<br>
-	* 이름 <input type = "text" name = "name"><br><br>
- 	* 주민등록번호 <input type="text" name = "jumin" maxlength = "6"> - <input type = "text" name="jumin2" maxlength="7"><br>
-	* 회원 ID <input type="text" name="id" maxlength="10" min="4">
-	<input type ="button" value="중복확인" onclick ="alert('중복확인완료');"><br>
-	<br>
-	* 비밀번호 <input type="password" name = "pw" maxlength="10" min="4"><br>
-	* 비밀번호확인 <input type="password" name = "pw2"><br>
-	E-mail <input type="email" name="email"><br>
-	* 전화번호 <input type="tel" name="usertel"><br>
-	 핸드폰번호 <input type="tel" name="handphone"><br>
-	 우편번호 <input type="text" name="postcode" readonly> - <input type="text" name="postcode" readonly>
-	 <input type="button" value ="검 색" onclick="location.href='test2.html';"><br>
-	 <input type="text" name="postcode" readonly><br>
-	 <br>
-	 상세 주소 <input type="text" name="detailAdd"><br>
-	* 회원분류 <select name="grade">
-					<option value="">선택해주십시오</option>
-					<option value="1">1등급</option>
-					<option value="2">2등급</option>
-					<option value="3">3등급</option>
-			</select><br>
-	<input type="button" value="가입" onclick = "fun1()">
-	<input type="button" value="취소">
-</form>
+<h2>Registration</h2>
+<h3>회원가입양식</h3>
+<div id="container">
+	<form action = "b.jsp" method="get" name="fr" >
+		<h4 style="color:gray;">* 표시는 반드시 입력하셔야 합니다</h4>
+		<ul>
+			<li>
+				<label for="name">* 이름</label>
+				<input type = "text" name = "name" required><br><br>
+		 	</li>
+		 	<li>
+			 	<label for="jumin">* 주민등록번호</label>
+			 	<input type="text" name = "jumin" maxlength = "6" required> - <input type = "text" name="jumin2" maxlength="7" required><br>
+			</li>
+			<li>
+				<label for="id">* 회원 ID</label>
+				<input type="text" name="id" maxlength="10" required>
+				<input type ="button" value="중복확인" onclick ="alert('중복확인완료');"><br>
+				<br>
+			</li>
+			<li>
+				<label for="pw">* 비밀번호</label>
+				<input type="password" name = "pw" maxlength="10" required><br>
+			</li>
+			<li>	
+				<label for="pw2">* 비밀번호확인</label>
+				<input type="password" name = "pw2" required><br>
+			</li>
+		
+			<li>
+				<label for="email">E-mail</label>
+				<input type="email" name="email"><br>
+			</li>
+		
+			<li>
+				<label for="usertel">* 전화번호</label>
+				<input type="tel" name="usertel" required><br>
+			</li>
+		
+			<li>
+				<label for="handphone">핸드폰번호</label>	
+				<input type="tel" name="handphone"><br>
+			</li>
+			<li>
+				<label for="postcode">우편번호</label>
+				 <input type="text" name="postcode" readonly> - <input type="text" name="postcode" readonly>
+				 <input type="button" value ="검 색" onclick="location.href='test2.html';"><br>
+				 <input type="text" name="postcode" readonly><br>
+				 <br>
+			</li>
+			<li>
+				<label for="detailAdd">상세 주소</label>
+				<input type="text" name="detailAdd"><br>
+			</li>
+			<li>
+				<label for="grade">* 회원분류</label>
+				<select name="grade">
+						<option value="">선택해주십시오</option>
+						<option value="1">1등급</option>
+						<option value="2">2등급</option>
+						<option value="3">3등급</option>
+				</select><br>
+			</li>
+		</ul>
+		<div id = buttons>
+		<input type="button" value="가입" onclick = "fun1()">
+		<input type="button" value="취소">
+		</div>
+	</form>
+</div>
 </body>
 </html>

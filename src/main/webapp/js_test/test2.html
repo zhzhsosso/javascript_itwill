@@ -3,15 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <title>js_test/test2.html</title>
+<style type="text/css">
+#header {
+	text-align : right;
+	color : gray;
+	font-size: 16px;
+	width:100%;
+	height:50px;
+	background-color: powderblue;
+	
+}
+h3{
+	top:30px;
+}
+#container{
+	text-align : center;
+
+	
+}
+</style>
 </head>
 <body>
-	<h1>우편번호찾기</h1>
-	<hr>
-	<p>
-	동이름을 입력하세요, 예)충무로1가 <br>
-	공백없이 입력해주십시오
-	</p>
-	<input type = "text" name = "dong">
-	<input type= "button" value="조회">
+	<div id="container">
+		<div id = "header">
+			<h3>우편번호찾기</h3>
+		</div>
+		<p>
+		동이름을 입력하세요. 예)<span style ="color:#E5E500;">충무로1가</span> <br>
+		공백없이 입력해주십시오.
+		</p>
+		<input type = "text" name = "dong">
+		<input type= "button" value="조회">
+	</div>
 </body>
 </html>
