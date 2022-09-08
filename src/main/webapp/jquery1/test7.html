@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery/test7.html</title>
+<script type="text/javascript" src="jquery-3.6.1.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+// 		대상.함수() 	대상.bind('이벤트종류',기능)	대상.click(기능)
+		$('h1').bind('click',function(){
+			$(this).html('변경');
+		});
+		$('div').click(function(){
+			$(this).append('+');
+			//이벤트 한번만 수행하고 멈춤
+			$(this).unbind();
+		});
+		
+		//대상.함수().함수()
+		$('img').mouseover(function(){
+			$(this).attr('src','ba.jpg');
+		}).mouseout(function(){
+			$(this).attr('src','ba.jpg');
+		});
+	});
+
+</script>
+</head>
+<body>
+<img src="ba.jpg">
+</body>
+</html>
